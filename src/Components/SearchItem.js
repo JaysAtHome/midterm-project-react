@@ -19,10 +19,11 @@ const SearchItem = ({ items }) => {
 
   return (
     <div>
-      <h2>Search Item</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="ID" value={id} onChange={(e) => setId(e.target.value)} required />
+        <h2>Search Item</h2>
+        <input type="text" placeholder="Item ID" value={id} onChange={(e) => setId(e.target.value)} required />
         <button type="submit">Search</button>
+        {message && <p>{message}</p>}
       </form>
       {item && (
         <div>
@@ -34,7 +35,6 @@ const SearchItem = ({ items }) => {
           <p>Category: {item.category}</p>
         </div>
       )}
-      {message && <p>{message}</p>}
     </div>
   );
 };

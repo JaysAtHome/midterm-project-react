@@ -7,7 +7,7 @@ const ItemTable = ({ items }) => {
     <table>
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Item ID</th>
           <th>Name</th>
           <th>Quantity</th>
           <th>Price</th>

@@ -11,8 +11,15 @@ import ItemTable from './Components/ItemTable';
 const App = () => {
   const [items, setItems] = useState([]);
   const [view, setView] = useState('home');
-
+  const [message, setMessage] = useState('');
+  
   const addItem = (newItem) => {
+    const existingItem = items.find((item) => item.id === newItem.id);
+    if (existingItem) {
+      setMessage(`Item with ID ${newItem.id} already exists!`);
+      return;
+    }
+
     setItems([...items, newItem]);
   };
 
@@ -30,6 +37,7 @@ const App = () => {
     };
   };
 
+  
   const removeItem = (id) => {
     const index = items.findIndex((item) => item.id === id);
     if (index === -1) return { message: 'Item not found!' };
@@ -56,7 +64,7 @@ const App = () => {
 
       <div className="main-content">
         {view === 'home' && <ItemTable items={items.slice(-5)} />}
-        {view === 'add' && <AddItem addItem={addItem} />}
+        {view === 'add' && <AddItem addItem={addItem} items={items} />}
         {view === 'update' && <UpdateItem updateItem={updateItem} />}
         {view === 'remove' && <RemoveItem removeItem={removeItem} />}
         {view === 'category' && <ItemCategory items={items} />}

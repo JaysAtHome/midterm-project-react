@@ -12,12 +12,12 @@ const RemoveItem = ({ removeItem }) => {
 
     return (
         <div>
-          <h2>Remove Item</h2>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="ID" value={id} onChange={(e) => setId(e.target.value)} required />
+          <h2>Remove Item</h2>
+            <input type="text" placeholder="Item ID" value={id} onChange={(e) => setId(e.target.value)} required />
             <button type="submit">Remove Item</button>
+            {message && <p>{message}</p>}
           </form>
-          {message && <p>{message}</p>}
         </div>
       );
     };

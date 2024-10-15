@@ -1,62 +1,155 @@
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Dashboard styles */
+.dashboard {
+  width: 250px;
+  background-color: #333;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #306e32;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard button:hover {
+  background-color: #45a049;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: rgb(86, 86, 86);
+}
+
+h2{
+  text-align: center;  
+}
+
+/* style for the forms */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #4CAF50;
+}
+
+button[type="submit"] {
+  padding: 12px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #258b2a;
+}
+
+/* Style for the tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+td {
+  background-color: #fff;
+}
+
+td:last-child {
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  color: red;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .app-container {
-    display: flex;
-  }
-  
-  .dashboard {
-    width: 200px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    height: 100vh;
-    display: flex;
     flex-direction: column;
   }
-  
-  .dashboard button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .dashboard button:hover {
-    background-color: #555;
-  }
-  
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  table {
+
+  .dashboard {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    flex-direction: row;
+    justify-content: space-around;
   }
-  
-  table, th, td {
-    border: 1px solid #ccc;
-  }
-  
-  th, td {
+
+  .main-content {
     padding: 10px;
-    text-align: left;
   }
-  
-  th {
-    background-color: #f4f4f4;
+
+  form {
+    width: 90%;
   }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
+}

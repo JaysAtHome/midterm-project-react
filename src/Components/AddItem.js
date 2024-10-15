@@ -1,81 +1,76 @@
-import { useState } from "react";
-import './style.css';
+import { useState } from 'react';
 
-const AddItem = ({ addItem }) => {
-    const [id, setId] = useState('');
-    const [name, setName] = useState('');
-    const [quantity, setQuantity] = useState();
-    const [price, setPrice] = useState();
-    const [category, setCategory] = useState('Clothing');
+const AddItem = ({ addItem, items }) => {
+  const [id, setId] = useState('');
+  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [price, setPrice] = useState('');
+  const [category, setCategory] = useState('');
+  const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!addItem) {
-            console.error("addItem function is not provided");
-            return;
-        }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        const newItem = {
-            id,
-            name,
-            quantity: parseInt(quantity),
-            price: parseFloat(price),
-            category,
-        };
+    // Check for duplicate ID
+    const existingItem = items.find((item) => item.id === id);
+    if (existingItem) {
+      setMessage(`Item with ID ${id} already exists!`);
+      return;
+    }
 
-        addItem(newItem);
-        alert('Item added successfully!');
-        // Reset form fields
-        setId('');
-        setName('');
-        setQuantity(1);
-        setPrice(0);
-        setCategory('Clothing');
-    };
+    const newQuantity = Math.max(0, quantity);
+    const newPrice = Math.max(0, price);
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="ID"
-                value={id}
-                onChange={(e) => setId(e.target.value)}
-                required
-            />
-            <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-            />
-            <input
-                type="number"
-                placeholder="Quantity"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-                min="1"
-                required
-            />
-            <input
-                type="number"
-                placeholder="Price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                min="0"
-                required
-            />
-            <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-            >
-                <option value="Clothing">Clothing</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Entertainment">Entertainment</option>
-            </select>
-            <button type="submit">Add Item</button>
-        </form>
-    );
+    addItem({ id, name, quantity: newQuantity, price: newPrice, category });
+    setMessage('Item added successfully!');
+    
+    setId('');
+    setName('');
+    setQuantity('');
+    setPrice('');
+    setCategory('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+    <h2>Add Item</h2>
+      <input
+        type="text"
+        placeholder="Item ID"
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+      />
+      <input
+        type="number"
+        placeholder="Quantity"
+        value={quantity}
+        onChange={(e) => setQuantity(Math.max(0, e.target.value))} // Prevent negative values
+        required
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        value={price}
+        onChange={(e) => setPrice(Math.max(0, e.target.value))} // Prevent negative prices
+        required
+      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="Clothing">Clothing</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Entertainment">Entertainment</option>
+      </select>
+      <button type="submit">Add Item</button>
+      <p>{message}</p>
+    </form>
+  );
 };
 
 export default AddItem;
