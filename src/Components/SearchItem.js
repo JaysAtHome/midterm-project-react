@@ -5,9 +5,13 @@ const SearchItem = ({ items }) => {
   const [item, setItem] = useState(null);
   const [message, setMessage] = useState('');
 
+  // Handle form submission for item search
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Search for the item by the provided ID
     const foundItem = items.find((item) => item.id === id);
+    
     if (foundItem) {
       setItem(foundItem);
       setMessage('');
@@ -21,18 +25,28 @@ const SearchItem = ({ items }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <h2>Search Item</h2>
-        <input type="text" placeholder="Item ID" value={id} onChange={(e) => setId(e.target.value)} required />
+        <input 
+          type="text" 
+          placeholder="Item ID" 
+          value={id} 
+          onChange={(e) => setId(e.target.value)} 
+          required 
+        />
         <button type="submit">Search</button>
+
+        {/* Display message if the item is not found */}
         {message && <p>{message}</p>}
       </form>
+
+      {/* Display the found item details */}
       {item && (
-        <div>
+        <div className="result-box">
           <h3>Item Details</h3>
-          <p>ID: {item.id}</p>
-          <p>Name: {item.name}</p>
-          <p>Quantity: {item.quantity}</p>
-          <p>Price: ${item.price}</p>
-          <p>Category: {item.category}</p>
+          <p><strong>ID:</strong> {item.id}</p>
+          <p><strong>Name:</strong> {item.name}</p>
+          <p><strong>Quantity:</strong> {item.quantity}</p>
+          <p><strong>Price:</strong> ${item.price}</p>
+          <p><strong>Category:</strong> {item.category}</p>
         </div>
       )}
     </div>

@@ -11,7 +11,7 @@ import ItemTable from './Components/ItemTable';
 const App = () => {
   const [items, setItems] = useState([]);
   const [view, setView] = useState('home');
-  const [message, setMessage] = useState('');
+  const [setMessage] = useState('');
   
   const addItem = (newItem) => {
     const existingItem = items.find((item) => item.id === newItem.id);
@@ -37,7 +37,6 @@ const App = () => {
     };
   };
 
-  
   const removeItem = (id) => {
     const index = items.findIndex((item) => item.id === id);
     if (index === -1) return { message: 'Item not found!' };
@@ -51,6 +50,7 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="dashboard">
+      <h2>Inventory Management System</h2>
         <button onClick={() => setView('home')}>Home</button>
         <button onClick={() => setView('add')}>Add Item</button>
         <button onClick={() => setView('update')}>Update Item</button>

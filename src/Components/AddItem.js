@@ -24,13 +24,14 @@ const AddItem = ({ addItem, items }) => {
     addItem({ id, name, quantity: newQuantity, price: newPrice, category });
     setMessage('Item added successfully!');
     
+    // resets input box after adding an item
     setId('');
     setName('');
     setQuantity('');
     setPrice('');
-    setCategory('');
+    setCategory('Clothing');
   };
-
+  // individual input boxes for each element (Item ID, Name, Quantity, Price, Category)
   return (
     <form onSubmit={handleSubmit}>
     <h2>Add Item</h2>

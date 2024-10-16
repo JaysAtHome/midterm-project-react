@@ -64,9 +64,6 @@ const SortItems = ({ items }) => {
               <td>{item.price}</td>
             </tr>
           ))}
-            <tr>
-            <td colSpan="5">No items found</td>
-          </tr>
         </tbody>
       </table>
     </div>
