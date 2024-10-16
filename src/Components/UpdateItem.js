@@ -27,6 +27,7 @@ const UpdateItem = ({ updateItem }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Update Item</h2>
       <input
         type="text"
         placeholder="Item ID"

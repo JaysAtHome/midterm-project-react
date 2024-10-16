@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './Styles/style.css';
 
 
 const ItemTable = ({ items }) => {
