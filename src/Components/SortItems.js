@@ -31,7 +31,7 @@ const SortItems = ({ items }) => {
 
   return (
     <div>
-      <h3>Sorted Items (Automatic)</h3>
+      <h2>Sort Items</h2>
       <label>Sort by: </label>
       <select value={sortField} onChange={(e) => setSortField(e.target.value)}>
         <option value="quantity">Quantity</option>
@@ -64,6 +64,9 @@ const SortItems = ({ items }) => {
               <td>{item.price}</td>
             </tr>
           ))}
+            <tr>
+            <td colSpan="5">No items found</td>
+          </tr>
         </tbody>
       </table>
     </div>
