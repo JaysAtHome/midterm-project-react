@@ -5,7 +5,7 @@ const AddItem = ({ addItem, items }) => {
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('');
   const [price, setPrice] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Clothing');
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
